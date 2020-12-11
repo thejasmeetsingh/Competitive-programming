@@ -4,7 +4,7 @@ class Solution:
             return nums
 
         for i in range(len(nums)):
-            nums[i] = nums[i] ** 2
+            nums[i] **= 2
 
         nums.sort()
         return nums
