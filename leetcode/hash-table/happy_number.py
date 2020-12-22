@@ -2,7 +2,7 @@ class Solution:
     def __init__(self):
         self.d = dict()
 
-    def calculate(self, val):
+    def calculate(self, val) -> int:
         if int(val) not in self.d:
             self.d[int(val)] = int(val) ** 2
         return self.d[int(val)]
