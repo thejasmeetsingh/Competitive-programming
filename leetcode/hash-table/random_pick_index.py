@@ -3,7 +3,7 @@ from collections import defaultdict
 
 
 class Solution:
-    def __init__(self, nums: List[int]):
+    def __init__(self, nums: list):
         self.indices = defaultdict(list)
         for i, n in enumerate(nums):
             self.indices[n].append(i)
