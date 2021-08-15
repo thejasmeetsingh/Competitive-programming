@@ -9,7 +9,7 @@ class Graph:
         self.graph[src].add(dest)
         self.graph[dest].add(src)
 
-    def dfs_util(self, visited, start):
+    def bfs_util(self, visited, start):
         queue = [start]
 
         while queue:
@@ -25,7 +25,7 @@ class Graph:
         while self.graph:
             visited = set()
 
-            self.dfs_util(visited, list(self.graph.keys())[0])
+            self.bfs_util(visited, list(self.graph.keys())[0])
 
             _max_comp = max(_max_comp, len(visited))
             _min_comp = min(_min_comp, len(visited))
