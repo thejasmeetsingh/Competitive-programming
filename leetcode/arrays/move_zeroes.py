@@ -1,18 +1,18 @@
 class Solution:
-    def moveZeroes(self, nums: list) -> None:
+    def moveZeroes(self, nums: List[int]) -> None:
         """
         Do not return anything, modify nums in-place instead.
         """
-
-        idx1, idx2 = 0, 1
-        while idx2 < len(nums):
-            if nums[idx1] != 0:
-                idx1 += 1
-                idx2 += 1
-            else:
-                if nums[idx2] != 0:
-                    c = nums[idx1]
-                    nums[idx1] = nums[idx2]
-                    nums[idx2] = c
-                else:
-                    idx2 += 1
+        
+        if not nums or len(nums) == 1:
+          return
+        
+        last_zero_idx = 0
+        curr = 0
+        
+        while curr < len(nums):
+          if nums[curr] != 0:
+            nums[last_zero_idx], nums[curr] = nums[curr], nums[last_zero_idx]
+            last_zero_idx += 1
+            
+          curr += 1
