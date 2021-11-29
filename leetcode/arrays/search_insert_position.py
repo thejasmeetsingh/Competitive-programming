@@ -7,7 +7,7 @@ class Solution:
         i, j = 0, len(nums)
         
         while i < j:
-          mid = (i + j) // 2
+          mid = (i + j) >> 1
           
           if nums[mid] == target:
             return mid
