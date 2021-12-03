@@ -3,20 +3,30 @@ class Solution:
         if not matrix:
             return False
 
-        for sub_list in matrix:
-            if sub_list and sub_list[0] <= target <= sub_list[-1]:
-                break
+        start = 0
+        end = len(matrix) - 1
 
-        if sub_list and target in set(sub_list):
-            lo = 0
-            hi = len(sub_list) - 1
-            while lo <= hi:
-                mid = (lo + hi) // 2
-                if sub_list[mid] == target:
+        while start <= end:
+            mid = (start + end) >> 1
+            if matrix[mid][0] <= target <= matrix[mid][-1]:
+                if matrix[mid][0] == target or matrix[mid][-1] == target:
                     return True
-                elif sub_list[mid] < target:
-                    lo = mid + 1
-                else:
-                    hi = mid - 1
+
+                _start = 0
+                _end = len(matrix[mid]) - 1
+
+                while _start <= _end:
+                    _mid = (_start + _end) >> 1
+                    if matrix[mid][_mid] == target:
+                        return True
+                    elif target < matrix[mid][_mid]:
+                        _end = _mid - 1
+                    else:
+                        _start = _mid + 1
+                return False
+            elif target < matrix[mid][0]:
+                end = mid - 1
+            else:
+                start = mid + 1
 
         return False
